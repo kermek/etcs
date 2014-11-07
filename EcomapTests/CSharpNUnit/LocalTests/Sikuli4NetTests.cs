@@ -26,6 +26,9 @@ namespace CSharpNUnit.LocalTests
         public void Test() {
             Screen scrn = new Screen();
             scrn.Find(pattern_ChromeIcon);
+            scrn.Click(pattern_ChromeIcon);
+            Assert.IsTrue(true);
+            
         }
 
         [TestFixtureTearDown]
