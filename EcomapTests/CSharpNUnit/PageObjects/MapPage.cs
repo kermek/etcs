@@ -33,8 +33,8 @@ namespace CSharpNUnit.PageObjects
 
             IJavaScriptExecutor js = driver as IJavaScriptExecutor;
             js.ExecuteScript("var map = document.getElementById('map-content');" +
-                "angular.element(map).scope().$parent.$parent.$parent.geoJson._map.setView(["
-                + latitude + "," + longitude + "]" + "," + zoom + ");");
+                "angular.element(map).scope().$parent.$parent.$parent.geoJson._map.setView([" +
+                "arguments[0], arguments[1]], arguments[2]);", latitude, longitude, zoom);
 
             IWebElement map = driver.FindElement(MAP);
             int navBarHeight = driver.FindElement(NAV_BAR).Size.Height;
@@ -56,14 +56,14 @@ namespace CSharpNUnit.PageObjects
                 x = mapWidth / 2;
                 y = navBarHeight + 1 + addProblemHeight + 1 + (mapHeight - navBarHeight - addProblemHeight - 2) / 2;
             }
-            js.ExecuteScript("var map = document.getElementById('map-content');"
-                + "var oldCenter = angular.element(map).scope().$parent.$parent.$parent.geoJson._map.getCenter();"
-                + "var newCenter = angular.element(map).scope().$parent.$parent.$parent"
-                        + ".geoJson._map.containerPointToLatLng([" + x + "," + y + "]);"
-                + "angular.element(map).scope().$parent.$parent.$parent.geoJson" +
-                        "._map.setView([" + latitude + " + oldCenter['lat'] - newCenter['lat'],"
-                                          + longitude + " + oldCenter['lng'] - newCenter['lng']]"
-                                          + "," + zoom + ");");
+            js.ExecuteScript("var map = document.getElementById('map-content');" +
+                             "var oldCenter = angular.element(map).scope().$parent.$parent.$parent.geoJson._map.getCenter();" +
+                             "var newCenter = angular.element(map).scope().$parent.$parent.$parent" + 
+                                                    ".geoJson._map.containerPointToLatLng([arguments[0], arguments[1]]);" +
+                             "angular.element(map).scope().$parent.$parent.$parent.geoJson" +
+                                    "._map.setView([arguments[2] + oldCenter['lat'] - newCenter['lat']," +
+                                                   "arguments[3] + oldCenter['lng'] - newCenter['lng']], arguments[4]);",
+                                       x, y, latitude, longitude, zoom);
         }
 
         public void ClickAtMapCenter(int offset)
