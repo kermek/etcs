@@ -33,6 +33,9 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Sikuli4Net">
+      <HintPath>..\packages\Sikuli4Net.1.0.6\lib\Sikuli4Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -51,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="LocalTests\AddProblem.cs" />
+    <Compile Include="LocalTests\Sikuli4NetTests.cs" />
     <Compile Include="PageObjects\AnyPage.cs" />
     <Compile Include="PageObjects\MapPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
