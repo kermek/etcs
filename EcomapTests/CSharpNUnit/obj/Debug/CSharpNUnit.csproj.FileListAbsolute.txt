@@ -1,0 +1,11 @@
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\CSharpNUnit.dll
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\CSharpNUnit.pdb
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\nunit.framework.dll
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\WebDriver.dll
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\WebDriver.Support.dll
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\nunit.framework.xml
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\WebDriver.xml
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\WebDriver.Support.xml
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\obj\Debug\CSharpNUnit.dll
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\obj\Debug\CSharpNUnit.pdb
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\obj\Debug\CSharpNUnit.csprojResolveAssemblyReference.cache
