@@ -90,19 +90,23 @@ namespace CSharpNUnit.PageObjects
                 */
             }
 
-            IList<IWebElement> commentElements = driver.FindElements(IMAGE_COMMENT_TEXT_BOX);
-            int i = 0;
-            foreach (IWebElement element in commentElements) {
-                element.SendKeys(imageComments[i]);
-                i++;
+            if (imageUrls.Count > 0) {
+                IList<IWebElement> commentElements = driver.FindElements(IMAGE_COMMENT_TEXT_BOX);
+                int i = 0;
+                foreach (IWebElement element in commentElements) {
+                    element.SendKeys(imageComments[i]);
+                    i++;
+                }
             }
 
             driver.FindElement(ADD_PROBLEM_SUBMIT_BUTTON).Click();
+            /*
             if (driver.FindElements(LOGIN_LINK).Count > 0) {
                 IWebElement alert = (new WebDriverWait(driver, TimeSpan.FromSeconds(10)))
                         .Until(ExpectedConditions.ElementIsVisible(ALERT));
                 alert.FindElement(CLOSE_CROSS).Click();
             }
+             */
         }
     }
 }

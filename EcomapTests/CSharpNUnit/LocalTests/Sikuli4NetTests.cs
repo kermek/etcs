@@ -12,8 +12,10 @@ namespace CSharpNUnit.LocalTests
 {
     public class Sikuli4NetTests
     {
-        public APILauncher launcher           = new APILauncher(true);
-        public Pattern pattern_ChromeIcon = new Pattern("http://s25.postimg.org/m87zkwrhn/pattern_Chrome_Icon.png");
+        public APILauncher launcher        = new APILauncher(true);
+        public Pattern pattern_ChromeIcon  = new Pattern("C:\\Users\\Yermek\\etcs\\EcomapTests\\resources\\patterns\\pattern_ChromeIcon.png");
+        public Pattern pattern_CalcIcon    = new Pattern("C:\\Users\\Yermek\\etcs\\EcomapTests\\resources\\patterns\\pattern_CalcIcon.png");
+        public Pattern pattern_CalcIconWeb = new Pattern("http://s25.postimg.org/f9aimk1t7/pattern_Calc_Icon.png");
 
         [TestFixtureSetUp]
         public void TestsSetup() { 
@@ -25,8 +27,8 @@ namespace CSharpNUnit.LocalTests
         [Test]
         public void Test() {
             Screen scrn = new Screen();
-            scrn.Find(pattern_ChromeIcon);
-            scrn.Click(pattern_ChromeIcon);
+            scrn.Find(pattern_CalcIconWeb);
+            scrn.Click(pattern_CalcIconWeb);
             Assert.IsTrue(true);
             
         }
