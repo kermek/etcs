@@ -26,6 +26,7 @@ namespace CSharpNUnit.LocalTests
 
         [Test]
         public void Test() {
+            System.Diagnostics.Debug.Write(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_CalcIcon.png");
             Screen scrn = new Screen();
             scrn.Find(pattern_CalcIcon);
             scrn.Click(pattern_CalcIcon);
