@@ -14,7 +14,7 @@ namespace CSharpNUnit.LocalTests
     {
         public APILauncher launcher        = new APILauncher(true);
         public Pattern pattern_ChromeIcon  = new Pattern("C:\\Users\\Yermek\\etcs\\EcomapTests\\resources\\patterns\\pattern_ChromeIcon.png");
-        public Pattern pattern_CalcIcon    = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\bin\\Debug\\Resources\\pattern_CalcIcon.png");
+        public Pattern pattern_CalcIcon    = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_CalcIcon.png");
         public Pattern pattern_CalcIconWeb = new Pattern("http://s25.postimg.org/f9aimk1t7/pattern_Calc_Icon.png");
 
         [TestFixtureSetUp]
