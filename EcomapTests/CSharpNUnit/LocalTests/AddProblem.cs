@@ -11,6 +11,7 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Firefox;
 using CSharpNUnit.PageObjects;
 using System.Threading;
+using CSharpNUnit.Utility;
 
 namespace CSharpNUnit.LocalTests
 {
@@ -70,6 +71,8 @@ namespace CSharpNUnit.LocalTests
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                                                ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
             Console.WriteLine("RunTime " + elapsedTime);
+            ExcelReport report = new ExcelReport();
+            report.AddTestTime(elapsedTime);
         }
     }
 }
