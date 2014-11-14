@@ -14,10 +14,10 @@ namespace CSharpNUnit
     // Requires reference to WebDriver.Support.dll
     using OpenQA.Selenium.Support.UI;
 
-    [TestFixture]
+    //[TestFixture]
     public class SeleniumTestExample1
     {
-        [Test]
+        //[Test]
         public void TestMethod()
         {
             // Create a new instance of the Firefox driver.

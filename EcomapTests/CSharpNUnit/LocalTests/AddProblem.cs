@@ -10,6 +10,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Firefox;
 using CSharpNUnit.PageObjects;
+using System.Threading;
 
 namespace CSharpNUnit.LocalTests
 {
@@ -45,17 +46,18 @@ namespace CSharpNUnit.LocalTests
             IList<String> imageComments   = new List<String>();
             String adminEmail             = "admin@.com";
             String adminPassword          = "admin";
-            //imageURLs.Add("http://i.imgur.com/HHXCVbs.jpg")
-            //imageURLs.Add("http://i.imgur.com/1K6AdCH.jpg");
-            // Arrays.asList("comment1", "comment2");
+            imageURLs.Add("http://i.imgur.com/HHXCVbs.jpg");
+            imageURLs.Add("http://i.imgur.com/1K6AdCH.jpg");
+            imageComments.Add("comment1");
+            imageComments.Add("comment2");
             
             AnyPage page = new AnyPage(driver);
             page.logIn(adminEmail, adminPassword);
             page.AddProblem(latitude, longitude, problemName, problemType, problemDescription, problemSolution,
                 imageURLs, imageComments);
             page.clickAtProblemByCoordinateVisible(latitude, longitude);
-
-            Assert.AreEqual(page.GetPageTitle(), problemName);
+            Thread.Sleep(1000);
+            Assert.AreEqual(problemName, page.GetPageTitle());
             page.DeleteCurrentProblem();
         }
 

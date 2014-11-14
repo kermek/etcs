@@ -1,9 +1,11 @@
-﻿using OpenQA.Selenium;
+﻿using CSharpNUnit.LocalTests;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CSharpNUnit.PageObjects
@@ -78,25 +80,28 @@ namespace CSharpNUnit.PageObjects
             driver.FindElement(BODY).SendKeys(Keys.Control + Keys.Home);
             driver.FindElement(ADD_PROBLEM_TAB3_IMAGE).Click();
 
-            foreach (String url in imageUrls) {
-                if (url.Length == 0) {
-                    continue;
-                }
-                // Sikuli
-                driver.FindElement(DROP_ZONE).Click();
-                /*
-                try {
-                    Thread.sleep(3000);
-                } catch (Exception e) {
-                }
-                thread.interrupt();
-                */
-            }
-
             if (imageUrls.Count > 0) {
+                Sikuli4NetThread sikuli = new Sikuli4NetThread();
+                foreach (String url in imageUrls)
+                {
+                    try
+                    {
+                        //System.Windows.Forms.Clipboard.SetText(url);
+                        Thread oThread = new Thread(new ParameterizedThreadStart(sikuli.ChooseFile));
+                        oThread.Start(url);
+                        driver.FindElement(DROP_ZONE).Click();
+                        Thread.Sleep(3000);
+                        oThread.Abort();
+                        oThread.Join();
+                    }
+                    catch (Exception e) { 
+                    }
+                }
+
                 IList<IWebElement> commentElements = driver.FindElements(IMAGE_COMMENT_TEXT_BOX);
                 int i = 0;
-                foreach (IWebElement element in commentElements) {
+                foreach (IWebElement element in commentElements)
+                {
                     element.SendKeys(imageComments[i]);
                     i++;
                 }
@@ -118,7 +123,19 @@ namespace CSharpNUnit.PageObjects
         }
 
         public String GetPageTitle() {
-            return driver.FindElement(PAGE_TITLE).Text;
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(1000));
+                IWebElement Title = wait.Until<IWebElement>((d) =>
+                {
+                    return d.FindElement(PAGE_TITLE);
+                });
+                return Title.Text;
+            }
+            catch (Exception e)
+            {
+                return "";
+            }
         }
     }
 }

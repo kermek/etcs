@@ -15,20 +15,20 @@ namespace CSharpNUnit
     {
         private IWebDriver driver;
 
-        [TestFixtureSetUp]
+        //[TestFixtureSetUp]
         public void FixtureSetup()
         {
             driver = new FirefoxDriver();
             driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 30));
         }
 
-        [SetUp]
+        //[SetUp]
         public void TestSetUp()
         {
         driver.Navigate().GoToUrl("https://www.google.com");
         }
 
-        [Test]
+        //[Test]
         public void SearchTest() {
             IWebElement query = driver.FindElement(By.Name("q"));
             query.SendKeys("Cheese");
@@ -40,7 +40,7 @@ namespace CSharpNUnit
             Assert.AreEqual("Cheese", driver.Title.Split(' ').GetValue(0));
         }
 
-        [TestFixtureTearDown]
+        //[TestFixtureTearDown]
         public void FixtureTearDown()
         {
         if (driver != null) driver.Close();

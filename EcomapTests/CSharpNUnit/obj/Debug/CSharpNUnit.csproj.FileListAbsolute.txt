@@ -15,3 +15,8 @@ C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\obj\Debug\CSharpNUnit.dll
 C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\obj\Debug\CSharpNUnit.pdb
 C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\Resources\pattern_CalcIcon.png
 C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\obj\Debug\CSharpNUnit.csprojResolveAssemblyReference.cache
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\Resources\cat1.jpg
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\Resources\cat2.jpg
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\Resources\cat3.jpg
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\Resources\pattern_FileNameField.png
+C:\Users\Yermek\etcs\EcomapTests\CSharpNUnit\bin\Debug\Resources\pattern_OpenButton.png

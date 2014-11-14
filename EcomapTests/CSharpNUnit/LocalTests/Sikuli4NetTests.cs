@@ -17,14 +17,14 @@ namespace CSharpNUnit.LocalTests
         public Pattern pattern_CalcIcon    = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_CalcIcon.png");
         public Pattern pattern_CalcIconWeb = new Pattern("http://s25.postimg.org/f9aimk1t7/pattern_Calc_Icon.png");
 
-        [TestFixtureSetUp]
+        //[TestFixtureSetUp]
         public void TestsSetup() { 
             launcher = new APILauncher(true);
 
             launcher.Start();
         }
 
-        [Test]
+        //[Test]
         public void Test() {
             System.Diagnostics.Debug.Write(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_CalcIcon.png");
             Screen scrn = new Screen();
@@ -35,7 +35,7 @@ namespace CSharpNUnit.LocalTests
             
         }
 
-        [TestFixtureTearDown]
+        //[TestFixtureTearDown]
         public void TestsTearDown() {
             launcher.Stop();
         }
