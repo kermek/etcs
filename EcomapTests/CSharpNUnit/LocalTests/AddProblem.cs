@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using NUnit;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -15,12 +16,14 @@ namespace CSharpNUnit.LocalTests
     class AddProblem
     {
         private IWebDriver driver;
+        Stopwatch sw;
 
         [TestFixtureSetUp]
         public void FixtureSetup()
         {
+            sw = Stopwatch.StartNew(); 
             driver = new FirefoxDriver();
-            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 30));
+            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 10));
         }
 
         [SetUp]
@@ -50,13 +53,21 @@ namespace CSharpNUnit.LocalTests
             page.logIn(adminEmail, adminPassword);
             page.AddProblem(latitude, longitude, problemName, problemType, problemDescription, problemSolution,
                 imageURLs, imageComments);
-            Assert.AreEqual("Cheese", "Cheese");
+            page.clickAtProblemByCoordinateVisible(latitude, longitude);
+
+            Assert.AreEqual(page.GetPageTitle(), problemName);
+            page.DeleteCurrentProblem();
         }
 
         [TestFixtureTearDown]
         public void FixtureTearDown()
         {
             if (driver != null) driver.Close();
+            sw.Stop();
+            TimeSpan ts = sw.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                                               ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            Console.WriteLine("RunTime " + elapsedTime);
         }
     }
 }

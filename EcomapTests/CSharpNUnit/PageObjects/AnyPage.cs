@@ -10,25 +10,28 @@ namespace CSharpNUnit.PageObjects
 {
     class AnyPage : MapPage
     {
-        public static readonly By LOGIN_LINK                   = By.LinkText("\u0412\u0425\u0406\u0414");
-        public static readonly By EMAIL_FIELD                  = By.Name("email");
-        public static readonly By PASSWORD_FIELD               = By.Name("password");
-        public static readonly By LOGIN_BUTTON                 = By.Id("login-button");
-        public static readonly By USER_PICTOGRAM               = By.ClassName("fa-user");
-        public static readonly By LOGOUT_LINK                  = By.LinkText("\u0412\u0418\u0419\u0422\u0418");
-        public static readonly By ADD_PROBLEM_BUTTON           = By.XPath("//*[@class='navbar-brand b-menu__button']");
-        public static readonly By ADD_PROBLEM_NEXT_TAB2_BUTTON = By.XPath("//button[@class='btn btn-default btn-sm ng-scope']");
-        public static readonly By PROBLEM_NAME_TEXT_BOX        = By.Id("problemName");
-        public static readonly By PROBLEM_TYPE_DROP_DOWN_LIST  = By.CssSelector("#select-field option");
-        public static readonly By PROBLEM_DESCRIPTION_FIELD    = By.Id("description-field");
-        public static readonly By PROBLEM_PROPOSE_FIELD        = By.Id("proposal-field");
-        public static readonly By DROP_ZONE                    = By.XPath("//div[contains(@class,'dz-clickable')]/span");
-        public static readonly By IMAGE_COMMENT_TEXT_BOX       = By.CssSelector("textarea.comment_field");
-        public static readonly By ADD_PROBLEM_SUBMIT_BUTTON    = By.Id("btn-submit");
-        public static readonly By ALERT                        = By.ClassName("alert");
-        public static readonly By CLOSE_CROSS                  = By.ClassName("close");
-        public static readonly By BODY                         = By.XPath("//body");
-        public static readonly By ADD_PROBLEM_TAB3_IMAGE       = By.ClassName("fa-file-photo-o");
+        private static readonly By LOGIN_LINK                    = By.LinkText("\u0412\u0425\u0406\u0414");
+        private static readonly By EMAIL_FIELD                   = By.Name("email");
+        private static readonly By PASSWORD_FIELD                = By.Name("password");
+        private static readonly By LOGIN_BUTTON                  = By.Id("login-button");
+        private static readonly By USER_PICTOGRAM                = By.ClassName("fa-user");
+        private static readonly By LOGOUT_LINK                   = By.LinkText("\u0412\u0418\u0419\u0422\u0418");
+        private static readonly By ADD_PROBLEM_BUTTON            = By.XPath("//*[@class='navbar-brand b-menu__button']");
+        private static readonly By ADD_PROBLEM_NEXT_TAB2_BUTTON  = By.XPath("//button[@class='btn btn-default btn-sm ng-scope']");
+        private static readonly By PROBLEM_NAME_TEXT_BOX         = By.Id("problemName");
+        private static readonly By PROBLEM_TYPE_DROP_DOWN_LIST   = By.CssSelector("#select-field option");
+        private static readonly By PROBLEM_DESCRIPTION_FIELD     = By.Id("description-field");
+        private static readonly By PROBLEM_PROPOSE_FIELD         = By.Id("proposal-field");
+        private static readonly By DROP_ZONE                     = By.XPath("//div[contains(@class,'dz-clickable')]/span");
+        private static readonly By IMAGE_COMMENT_TEXT_BOX        = By.CssSelector("textarea.comment_field");
+        private static readonly By ADD_PROBLEM_SUBMIT_BUTTON     = By.Id("btn-submit");
+        private static readonly By ALERT                         = By.ClassName("alert");
+        private static readonly By CLOSE_CROSS                   = By.ClassName("close");
+        private static readonly By BODY                          = By.XPath("//body");
+        private static readonly By ADD_PROBLEM_TAB3_IMAGE        = By.ClassName("fa-file-photo-o");
+        private static readonly By DELETE_PROBLEM_BUTTON         = By.XPath("//button[contains(@ng-click,'deleteProblemFromDb()')]");
+        private static readonly By APPROVE_DELETE_PROBLEM_BUTTON = By.ClassName("btn-warning");
+        private static readonly By PAGE_TITLE                    = By.XPath("//h1");
 
         private IWebDriver driver;
 
@@ -107,6 +110,15 @@ namespace CSharpNUnit.PageObjects
                 alert.FindElement(CLOSE_CROSS).Click();
             }
              */
+        }
+
+        public void DeleteCurrentProblem() {
+            driver.FindElement(DELETE_PROBLEM_BUTTON).Click();
+            driver.FindElement(APPROVE_DELETE_PROBLEM_BUTTON).Click();
+        }
+
+        public String GetPageTitle() {
+            return driver.FindElement(PAGE_TITLE).Text;
         }
     }
 }

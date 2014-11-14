@@ -38,14 +38,22 @@ namespace CSharpNUnit.PageObjects
 
             IWebElement map = driver.FindElement(MAP);
             int navBarHeight = driver.FindElement(NAV_BAR).Size.Height;
-            IList<IWebElement> addProblem = driver.FindElements(ADD_PROBLEM_MENU);
+            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 1));
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10));
+                IWebElement addProblem = wait.Until<IWebElement>((d) =>
+                {
+                    return d.FindElement(ADD_PROBLEM_MENU);
+                });
+                addProblemWidth = addProblem.Size.Width;
+                addProblemHeight = addProblem.Size.Height;
+            }
+            catch (Exception e) { 
+            }
+            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 10));
             mapWidth = map.Size.Width;
             mapHeight = map.Size.Height;
-            if (addProblem.Count > 0)
-            {
-                addProblemWidth = addProblem[0].Size.Width;
-                addProblemHeight = addProblem[0].Size.Height;
-            }
             if (mapWidth != addProblemWidth)
             {              // wide screen, addProblem at the left side
                 x = (mapWidth - addProblemWidth) / 2;
@@ -77,14 +85,23 @@ namespace CSharpNUnit.PageObjects
 
             IWebElement map = driver.FindElement(MAP);
             int navBarHeight = driver.FindElement(NAV_BAR).Size.Height;
-            IList<IWebElement> addProblem = driver.FindElements(ADD_PROBLEM_MENU);
+            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 1));
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(10));
+                IWebElement addProblem = wait.Until<IWebElement>((d) =>
+                {
+                    return d.FindElement(ADD_PROBLEM_MENU);
+                });
+                addProblemWidth = addProblem.Size.Width;
+                addProblemHeight = addProblem.Size.Height;
+            }
+            catch (Exception e)
+            {
+            }
+            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 0, 10));
             mapWidth = map.Size.Width;
             mapHeight = map.Size.Height;
-            if (addProblem.Count > 0)
-            {
-                addProblemWidth = addProblem[0].Size.Width;
-                addProblemHeight = addProblem[0].Size.Height;
-            }
             if (mapWidth != addProblemWidth)
             {              // wide screen, addProblem at the left side
                 x = (mapWidth - addProblemWidth) / 2;
