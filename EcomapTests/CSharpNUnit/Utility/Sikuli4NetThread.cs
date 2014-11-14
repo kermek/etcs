@@ -14,8 +14,8 @@ namespace CSharpNUnit.LocalTests
     public class Sikuli4NetThread
     {
         private APILauncher launcher          = new APILauncher(true);
-        private Pattern pattern_OpenButton = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_OpenButtonWindows8RU.png");
-        private Pattern pattern_FileNameField = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_FileNameField_Windows8.png");
+        private Pattern pattern_OpenButton;
+        private Pattern pattern_FileNameField;
         //private Pattern pattern_OpenButton = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_OpenButtonWindows7EN.png");
         //private Pattern pattern_FileNameField = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_FileNameField_Windows7.png");
         
@@ -24,6 +24,13 @@ namespace CSharpNUnit.LocalTests
 
             launcher.Start();
             //System.Diagnostics.Debug.Write(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_CalcIcon.png");
+            if (System.Globalization.CultureInfo.CurrentCulture.ThreeLetterISOLanguageName.Equals("rus")) {
+                pattern_OpenButton = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_OpenButtonWindows8RU.png");
+                pattern_FileNameField = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_FileNameField_Windows8.png");
+            } else {
+                pattern_OpenButton = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_OpenButtonWindows7EN.png");
+                pattern_FileNameField = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_FileNameField_Windows7.png");
+            }
             Screen scrn = new Screen();
             String file = (string)FileName;
 
