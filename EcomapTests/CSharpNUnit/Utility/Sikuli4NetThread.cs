@@ -24,7 +24,7 @@ namespace CSharpNUnit.LocalTests
 
             launcher.Start();
             //System.Diagnostics.Debug.Write(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_CalcIcon.png");
-            if (System.Globalization.CultureInfo.CurrentCulture.ThreeLetterISOLanguageName.Equals("rus")) {
+            if (System.Globalization.CultureInfo.InstalledUICulture.ThreeLetterISOLanguageName.Equals("rus")) {
                 pattern_OpenButton = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_OpenButtonWindows8RU.png");
                 pattern_FileNameField = new Pattern(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\pattern_FileNameField_Windows8.png");
             } else {
