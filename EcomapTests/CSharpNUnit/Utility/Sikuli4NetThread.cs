@@ -30,7 +30,7 @@ namespace CSharpNUnit.LocalTests
             thread.Start();
             thread.Join();
             //System.Windows.Clipboard.SetText((string)FileName);
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             
             scrn.Click(pattern_FileNameField);
             scrn.Type(pattern_FileNameField, "v", KeyModifier.CTRL);
